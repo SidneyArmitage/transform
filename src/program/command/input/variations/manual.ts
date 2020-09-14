@@ -1,4 +1,5 @@
 import { Program } from "../../../program";
+import { Command } from "../../command";
 import { Input } from "../input";
 
 export class Manual<T> extends Input<T> {

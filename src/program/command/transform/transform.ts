@@ -18,4 +18,12 @@ export abstract class Transform<T> extends Command<T> {
   public get_outputs(): Command<any>[] {
     return this.outputs;
   }
+  
+  public add_input(command: Command<any>): void {
+    this.inputs.push(command);
+  }
+
+  public add_output(command: Command<any>): void {
+    this.outputs.push(command);
+  }
 }

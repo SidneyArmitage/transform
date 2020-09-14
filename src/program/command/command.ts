@@ -15,7 +15,9 @@ export abstract class Command<T> {
   }
 
   public abstract get_inputs(): Command<any>[];
+  public abstract add_input(command: Command<any>): void;
   public abstract get_outputs(): Command<any>[];
+  public abstract add_output(command: Command<any>): void;
   
   public get_value(): T {
     return this.value;

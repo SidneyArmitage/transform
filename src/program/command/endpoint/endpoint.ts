@@ -16,4 +16,12 @@ export abstract class Endpoint extends Command<null> {
   public get_outputs(): Command<any>[] {
     return [];
   }
+  
+  public add_input(command: Command<any>): void {
+    this.inputs.push(command);
+  }
+
+  public add_output(command: Command<any>): void {
+    throw Error("Unable to attach output to endpoint");
+  }
 }

@@ -1,0 +1,27 @@
+{
+  "command": [
+    {
+      "id": 0,
+      "type": "manual",
+      "data": {
+        "value": 1
+      }
+    },
+    {
+      "id": 1,
+      "type": "log",
+      "data": {
+
+      }
+    }
+  ],
+  "connection": [
+    {
+      "id": 0,
+      "next": [
+        1
+      ]
+    }
+  ],
+  "counter": 2
+}
