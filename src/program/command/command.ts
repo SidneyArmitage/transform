@@ -37,10 +37,9 @@ export abstract class Command<T> {
       this.program.stop(err);
       throw err;
     }
-
+    this.last_execution_id = execution_id;
     await Promise.resolve(this.get_outputs().map(async output => output.run(execution_id)));
     
-    this.last_execution_id = execution_id;
   }
 
   public propagate_aborted(aborted: boolean) {

@@ -31,6 +31,7 @@ const command = (source: I_command[], program: Program): Command_output => {
           break;
         case "log": 
           output[current.id] = log(program);
+          break;
         default:
           console.error("unknown source for:", source[item].type);
       }
@@ -44,10 +45,9 @@ const command = (source: I_command[], program: Program): Command_output => {
 };
 
 const connection = (source: I_connection[], commands: Command_output) => {
-  for (let conn in source) {
-    const current = source[conn];
+  for (let current of source) {
     const input = commands[current.id];
-    for (let item in current.next) {
+    for (let item of current.next) {
       commands[item].add_input(input);
       input.add_output(commands[item]);
     }
