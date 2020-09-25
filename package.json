@@ -3,8 +3,12 @@
   "version": "1.0.0",
   "description": "The idea is to have a program that will transform data from a source into a usable output for the user",
   "main": "index.js",
+  "type": "module",
   "scripts": {
-    "test": "jest"
+    "test": "jest",
+    "server": "node ./dist/server",
+    "watch": "tsc -watch",
+    "headless": "node ./dist/headless"
   },
   "keywords": [],
   "author": "",
@@ -14,5 +18,9 @@
     "jest": "^26.4.2",
     "ts-jest": "^26.3.0",
     "typescript": "^4.0.2"
+  },
+  "dependencies": {
+    "@types/express": "^4.17.8",
+    "express": "^4.17.1"
   }
 }
