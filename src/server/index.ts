@@ -9,7 +9,7 @@ const sendFile_config = {
 };
 
 const getPath = (uri: string): string => {
-  if (/.js$/.test(uri)) {
+  if (/\.js|\.map$/.test(uri)) {
     return uri;
   }
   {
@@ -28,22 +28,23 @@ const getPath = (uri: string): string => {
   throw Error(`Unable to get file ${uri}`);
 }
 
-app.get("/script/*", (req, res) => {
-  res.set("Context-Type", "text/javascript");
-  console.log(req.path)
-  const path = getPath(join("dist", req.path));
-
-  res.sendFile(path, sendFile_config);
-});
-
 app.get("/css/*", (req, res) => {
   console.log(req.path)
   res.sendFile(req.path, sendFile_config);
 });
 
-app.get(/(^\/$)|(index(\.html)?)/, (_, res) => {
+app.get(/((^\/)|(index(\.html)?))$/, (_, res) => {
+  console.log("sending index");
   res.set("Content-Type", "text/html");
   res.sendFile("/html/index.html", sendFile_config);
+});
+
+app.get("*", (req, res) => {
+  res.set("Context-Type", "text/javascript");
+  console.log(req.path);
+  const path = getPath(join("dist", "script", req.path));
+
+  res.sendFile(path, sendFile_config);
 });
 
 app.listen(80, () => {

@@ -3,7 +3,7 @@ import { Program } from "../../program/program";
 
 export interface I_manual_command {
   id: number;
-  type: "manual";
+  type: "scalar-manual";
   data: I_manual_data;
 }
 

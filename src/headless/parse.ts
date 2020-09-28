@@ -26,7 +26,7 @@ const command = (source: I_command[], program: Program): Command_output => {
     const current = source[item];
     try {
       switch (current.type) {
-        case "manual": 
+        case "scalar-manual": 
           output[current.id] = manual(current.data, program);
           break;
         case "log": 

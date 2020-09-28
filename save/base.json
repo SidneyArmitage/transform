@@ -2,7 +2,7 @@
   "command": [
     {
       "id": 0,
-      "type": "manual",
+      "type": "scalar-manual",
       "data": {
         "value": 1
       }
