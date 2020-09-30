@@ -28,8 +28,8 @@
 
 .dropdown-item {
   display: block;
-  background: none;
-  color: inherit;
+  background: var(--color-1);
+  color: var(--color-3);
   font: inherit;
   border: none;
   outline: inherit;

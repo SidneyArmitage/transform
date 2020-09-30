@@ -1,0 +1,22 @@
+.command {
+  position: absolute;
+  background-color: var(--color-1);
+  color: var(--color-0);
+  padding: 0.4em;
+}
+
+.command-name {
+  border-bottom: 0.01em solid var(--color-2);
+  width: 100%;
+  font-size: 1.6em;
+}
+
+.command-area {
+  padding-top: 0.4em;
+}
+
+.scalar-manual {
+  display: grid;
+  grid-template-columns: auto auto;
+  grid-template-rows: auto auto;
+}

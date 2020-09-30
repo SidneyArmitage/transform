@@ -39,6 +39,12 @@ export class Dropdown {
     this.element.style.bottom = `${pos.y}px`;
     this.element.style.left = `${pos.x}px`;
   }
+
+  public getPosition() {
+    return {
+      ...this.pos,
+    };
+  }
 }
 
 const onClick = (dropdown: Dropdown) => () => {

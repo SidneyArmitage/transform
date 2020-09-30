@@ -1,5 +1,8 @@
+import { ProgramUIControl } from "../control/programUIControl";
 import { Dropdown } from "../dropdown";
 
-export interface DropdownContainer {
+export interface InputContainer {
   dropdown?: Dropdown;
+  control: ProgramUIControl;
+  parent: HTMLElement;
 };
