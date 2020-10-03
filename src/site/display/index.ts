@@ -10,7 +10,7 @@ export default () => {
     throw Error("Unable to find display");
   }
   const elements = [];
-  const inputContainer: InputContainer = {
+  const inputContainer: Input_container = {
     control: new Program_UI_Control(),
     parent: display,
   };
