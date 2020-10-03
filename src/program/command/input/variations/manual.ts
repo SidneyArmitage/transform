@@ -4,8 +4,8 @@ import { Input } from "../input";
 
 export class Manual<T> extends Input<T> {
 
-  constructor(program: Program, value: T) {
-    super(program, value)
+  constructor(program: Program, value: T, id?: number) {
+    super(program, value, id);
   }  
 
   public set_value (value: T) {

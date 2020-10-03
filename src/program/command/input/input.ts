@@ -4,10 +4,10 @@ import { Command } from "../command";
 export abstract class Input<T> extends Command<T> {
   private outputs: Command<any>[];
 
-  constructor(program: Program, value: T) {
-    super(program, value);
+  constructor(program: Program, value: T, id?: number) {
+    super(program, value, id);
     this.outputs = [];
-    program.addInput(this);
+    program.add_input(this);
   }
 
   public get_inputs(): Command<any>[] {

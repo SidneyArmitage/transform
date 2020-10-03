@@ -56,7 +56,7 @@ const connection = (source: I_connection[], commands: Command_output) => {
 
 export const parse = (data: I_input): Program => {
   const program = new Program();
-  program.setCounter(data.counter);
+  program.set_counter(data.counter);
   const commands = command(data.command, program);
   connection(data.connection, commands);
 

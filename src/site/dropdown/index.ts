@@ -7,8 +7,8 @@ export class Dropdown {
   private isVisible: Boolean;
   private element: HTMLElement;
   private parent: HTMLElement;
-  private clickFunction: () => void;
-  private onContextMenuFunction: (e: MouseEvent) => Boolean;
+  private click_fn: () => void;
+  private on_context_menu_fn: (e: MouseEvent) => Boolean;
 
   constructor(parent: HTMLElement, items: HTMLElement[]) {
     this.pos = zero();
@@ -18,48 +18,48 @@ export class Dropdown {
     this.parent = parent;
     items.forEach((item) => this.element.appendChild(item));
     this.parent.appendChild(this.element);
-    this.clickFunction = onClick(this);
-    window.addEventListener("click", this.clickFunction);
-    this.onContextMenuFunction = onContextMenu(this);
-    this.parent.addEventListener("contextmenu", this.onContextMenuFunction);
+    this.click_fn = on_click(this);
+    window.addEventListener("click", this.click_fn);
+    this.on_context_menu_fn = on_context_menu(this);
+    this.parent.addEventListener("contextmenu", this.on_context_menu_fn);
   }
 
-  public setVisible(isVisible: Boolean) {
+  public set_visible(isVisible: Boolean) {
     this.isVisible = isVisible;
     this.element.style.display = this.isVisible ? "block" : "none";
   }
 
-  public getIsVisible(): Boolean {
+  public get_is_visible(): Boolean {
     return this.isVisible;
   }
 
-  public setPosition(pos: Point) {
+  public set_position(pos: Point) {
     console.log(pos);
     this.pos = pos;
     this.element.style.bottom = `${pos.y}px`;
     this.element.style.left = `${pos.x}px`;
   }
 
-  public getPosition() {
+  public get_position() {
     return {
       ...this.pos,
     };
   }
 }
 
-const onClick = (dropdown: Dropdown) => () => {
-  if (!dropdown.getIsVisible()) {
+const on_click = (dropdown: Dropdown) => () => {
+  if (!dropdown.get_is_visible()) {
     return;
   }
-  dropdown.setVisible(false);
+  dropdown.set_visible(false);
 };
 
-const onContextMenu = (dropdown: Dropdown) => (e: MouseEvent): Boolean => {
-  dropdown.setPosition({
+const on_context_menu = (dropdown: Dropdown) => (e: MouseEvent): Boolean => {
+  dropdown.set_position({
     x: e.pageX,
     y: window.innerHeight -e.pageY,
   });
-  dropdown.setVisible(true);
+  dropdown.set_visible(true);
   e.preventDefault();
   return false;
 }

@@ -29,7 +29,7 @@ export class Scalar_manual_command extends Command {
     typeSelect.appendChild(createOption("boolean", "boolean"));
     typeSelect.value = "number";
     this.type = "number";
-    typeSelect.addEventListener("change", (event: Event) => this.changeType((event.target as HTMLSelectElement).value));
+    typeSelect.addEventListener("change", (event: Event) => this.change_type((event.target as HTMLSelectElement).value));
 
     const valueLabel = document.createElement("label");
     valueLabel.textContent = "value";
@@ -47,11 +47,11 @@ export class Scalar_manual_command extends Command {
     this.area.classList.add("scalar-manual");
   }
 
-  public getValue (): Primitive {
+  public get_value (): Primitive {
     return this.type === "number" ? Number.parseFloat(this.valueInput.value) : this.type === "boolean" ? (this.valueInput.value === "true" ? true : false) : this.valueInput.value;
   }
 
-  public changeType (type: string) {
+  public change_type (type: string) {
     switch(type) {
       case "number":
         this.valueInput.type = "number";

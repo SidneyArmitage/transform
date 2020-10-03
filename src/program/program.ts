@@ -4,17 +4,23 @@ import { Input } from "./command/input/input";
 export class Program {
   private inputs: Command<any>[];
   private counter: number;
+  private id: number;
 
-  constructor() {
+  /**
+   * 
+   * @param id starting id
+   */
+  constructor(id: number = 0) {
     this.inputs = [];
     this.counter = 0;
+    this.id = id;
   }
 
   /**
    * the new value can only be larger than the existing value.
    * @param value number
    */
-  public setCounter (value: number): boolean {
+  public set_counter (value: number): boolean {
     if (value <= this.counter) {
       return false;
     }
@@ -22,8 +28,12 @@ export class Program {
     return true;
   }
 
-  public addInput (input: Input<any>) {
+  public add_input (input: Input<any>) {
     this.inputs.push(input);
+  }
+
+  public pop_id() {
+    return this.id++;
   }
 
   public async run(): Promise<void> {

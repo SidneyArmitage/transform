@@ -8,7 +8,7 @@ const sendFile_config = {
   root: process.cwd(),
 };
 
-const getPath = (uri: string): string => {
+const get_path = (uri: string): string => {
   if (/\.js|\.map$/.test(uri)) {
     return uri;
   }
@@ -42,7 +42,7 @@ app.get(/((^\/)|(index(\.html)?))$/, (_, res) => {
 app.get("*", (req, res) => {
   res.set("Context-Type", "text/javascript");
   console.log(req.path);
-  const path = getPath(join("dist", "script", req.path));
+  const path = get_path(join("dist", "script", req.path));
 
   res.sendFile(path, sendFile_config);
 });

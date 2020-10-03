@@ -4,8 +4,8 @@ import { Command } from "../command";
 export abstract class Endpoint extends Command<null> {
   private inputs: Command<any>[];
   
-  constructor(program: Program) {
-    super(program, null);
+  constructor(program: Program, id?: number) {
+    super(program, null, id);
     this.inputs = [];
   }
 

@@ -14,7 +14,7 @@ export abstract class Command {
     this.wrapper = document.createElement("div");
     this.wrapper.classList.add("command");
     this.pos = pos;
-    this.setPos(pos);
+    this.set_pos(pos);
 
     this.name = document.createElement("div");
     this.name.textContent = name;
@@ -28,7 +28,7 @@ export abstract class Command {
     parent.appendChild(this.wrapper);
   }
 
-  public setPos (pos: Point) {
+  public set_pos (pos: Point) {
     this.wrapper.style.top = `${pos.y}px`;
     this.wrapper.style.left = `${pos.x}px`;
     this.pos = pos;

@@ -1,8 +1,8 @@
-import { createSection, Dropdown } from "../dropdown";
-import { InputContainer} from "../factories";
+import { Dropdown } from "../dropdown";
+import { Input_container} from "../factories";
 import * as input from "../factories/input";
 import * as endpoint from "../factories/endpoint";
-import { ProgramUIControl } from "../control/programUIControl";
+import { Program_UI_Control } from "../control/programUIControl";
 
 export default () => {
   const display = document.getElementById("display");
@@ -11,7 +11,7 @@ export default () => {
   }
   const elements = [];
   const inputContainer: InputContainer = {
-    control: new ProgramUIControl(),
+    control: new Program_UI_Control(),
     parent: display,
   };
   elements.push(input.section(inputContainer));

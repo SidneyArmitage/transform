@@ -1,15 +1,15 @@
-import { InputContainer } from "..";
+import { Input_container } from "..";
 import { Log_command } from "../../display/command.ts/endpoint/log";
-import { createItem, createSection } from "../../dropdown";
+import { create_item, create_section } from "../../dropdown";
 
-export const section = (inputs: InputContainer): HTMLElement => {
+export const section = (inputs: Input_container): HTMLElement => {
   
   const elements = [];
-  elements.push(createItem("Log", () => {
+  elements.push(create_item("Log", () => {
     if (!inputs.dropdown) {
       throw Error("Unable to get dropdown");
     }
-    inputs.control.addCommand(new Log_command(inputs.dropdown.getPosition(), inputs.control.popID(), inputs.parent));
+    inputs.control.add_command(new Log_command(inputs.dropdown.get_position(), inputs.control.pop_id(), inputs.parent));
   }));
-  return createSection("Endpoint", elements);
+  return create_section("Endpoint", elements);
 }

@@ -1,4 +1,4 @@
-export const createSection = (name: string, content: HTMLElement[]): HTMLElement => {
+export const create_section = (name: string, content: HTMLElement[]): HTMLElement => {
   const dropdown = document.createElement("div");
   dropdown.classList.add("dropdown-section");
   // tag
@@ -15,7 +15,7 @@ export const createSection = (name: string, content: HTMLElement[]): HTMLElement
   return dropdown;
 };
 
-export const createItem = (name: string, action: () => void): HTMLElement => {
+export const create_item = (name: string, action: () => void): HTMLElement => {
   const item = document.createElement("button");
   item.classList.add("dropdown-item");
   item.textContent = name;
