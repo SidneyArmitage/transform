@@ -6,13 +6,14 @@ export abstract class Command<T> {
   private program: Program;
   private aborted: boolean;
   private on_start_listener: (() => void)[];
-  private on_finish_listener: ((err: string, value: T) => void)[];
+  private on_finish_listener: (((err: any, value: T | null) => void))[];
   
   protected value: T;
 
   constructor(program: Program, value: T, id?: number) {
     this.last_execution_id = 0;
     this.id = id || program.pop_id();
+    program.add_command(this);
     this.program = program;
     this.aborted = false;
     this.value = value;
@@ -42,8 +43,11 @@ export abstract class Command<T> {
       return;
     }
     try {
+      this.on_start_listener.forEach((fn) => fn());
       await this.run_local();
-    } catch (err) {
+      this.on_finish_listener.forEach((fn) => fn(null, this.value));
+    } catch (err: any) {
+      this.on_finish_listener.forEach((fn) => fn(err, null));
       this.program.stop(err);
       throw err;
     }

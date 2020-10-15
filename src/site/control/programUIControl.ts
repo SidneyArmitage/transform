@@ -9,10 +9,6 @@ export class Program_UI_Control {
     this.commands = [];
   }
 
-  public pop_id(): number {
-    return this.id++;
-  }
-
   public add_command(command: Command) {
     this.commands.push(command);
   }

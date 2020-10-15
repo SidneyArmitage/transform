@@ -1,10 +1,15 @@
 import { Command } from "./command/command";
 import { Input } from "./command/input/input";
 
+interface Command_list {
+  [id: number]: Command<any>
+}
+
 export class Program {
   private inputs: Command<any>[];
   private counter: number;
   private id: number;
+  private command_list: Command_list;
 
   /**
    * 
@@ -14,6 +19,7 @@ export class Program {
     this.inputs = [];
     this.counter = 0;
     this.id = id;
+    this.command_list = {};
   }
 
   /**
@@ -45,5 +51,13 @@ export class Program {
   stop(reason: string) {
     console.log("stopping due to:", reason);
     this.inputs.map(e => e.propagate_aborted(true));
+  }
+
+  public add_command(command: Command<any>) {
+    this.command_list[command.get_id()] = command;
+  }
+
+  public get_command(id: number): Command<any> {
+    return this.command_list[id]
   }
 }
