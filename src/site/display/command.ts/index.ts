@@ -31,8 +31,11 @@ export abstract class Command implements I_movable {
     
     this.wrapper = document.createElement("div");
     this.wrapper.classList.add("command");
-    this.pos = pos;
-    this.set_pos(pos);
+    this.pos = control.get_view_control().correct_position({
+      x: pos.x,
+      y: window.innerHeight - pos.y,
+    });
+    this.set_pos(this.pos);
 
     this.name = document.createElement("div");
     this.name.textContent = name;
@@ -65,17 +68,21 @@ export abstract class Command implements I_movable {
   }
 
   public on_move(position: Point): void {
-    this.set_pos(subtract(position, this.movement_offset));
+    const temp = subtract(position, this.movement_offset);
+    this.set_pos({
+      x: temp.x,
+      y: window.innerHeight - temp.y,
+    });
     this.inputs.forEach((e) => e.update());
     this.outputs.forEach((e) => e.update());
   }
 
   public set_pos (pos: Point) {
-    this.wrapper.style.top = `${window.innerHeight - pos.y}px`;
+    this.wrapper.style.top = `${pos.y}px`;
     this.wrapper.style.left = `${pos.x}px`;
     this.pos = {
       x: pos.x,
-      y: window.innerHeight - pos.y,
+      y: pos.y,
     };
     console.log(pos);
   }

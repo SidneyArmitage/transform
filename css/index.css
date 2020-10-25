@@ -20,6 +20,7 @@ header {
   justify-content: center;
   align-items: center;
   z-index: 1;
+  user-select: none;
 }
 
 header > h1 {

@@ -51,6 +51,7 @@ export class View_control {
       y: this.element.scrollTop + event.clientY - this.start_position.y,
     };
     this.rule.style.transform = `translate(${this.position.x}px, ${this.position.y}px)`;
+    this.element.style.backgroundPosition = `${54 + this.position.x}px ${55+ this.position.y}px, ${this.position.x}px ${this.position.y}px, ${this.position.x}px ${this.position.y}px, ${this.position.x}px ${this.position.y}px, ${this.position.x}px ${this.position.y}px`;
   }
 
   public correct_position (view: Point): Point {
