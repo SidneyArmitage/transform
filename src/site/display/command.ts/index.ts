@@ -84,7 +84,6 @@ export abstract class Command implements I_movable {
       x: pos.x,
       y: pos.y,
     };
-    console.log(pos);
   }
 
   public get_pos () {
