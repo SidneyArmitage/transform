@@ -9,7 +9,7 @@ export const section = (inputs: Input_container): HTMLElement => {
     if (!inputs.dropdown) {
       throw Error("Unable to get dropdown");
     }
-    inputs.control.add_command(new Scalar_manual_command(inputs.dropdown.get_position(), inputs.control, inputs.parent));
+    inputs.control.add_command(new Scalar_manual_command(inputs.control.get_view_control().correct_position(inputs.dropdown.get_position()), inputs.control, inputs.parent));
   }));
   elements.push(create_item("test", () => {}));
   return create_section("Input", elements);

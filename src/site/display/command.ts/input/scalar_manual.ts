@@ -1,6 +1,6 @@
 import { Command } from "..";
 import { Point } from "../../../../util";
-import { Program_UI_Control } from "../../../control/programUIControl";
+import { Program_UI_Control } from "../../../control/program_UI_Control";
 
 const createOption = (name: string, value: string) => {
   const option = document.createElement("option");
@@ -46,6 +46,7 @@ export class Scalar_manual_command extends Command {
     this.area.appendChild(typeSelect);
     this.area.appendChild(this.valueInput);
     this.area.classList.add("scalar-manual");
+    this.output_add();
   }
 
   public get_value (): Primitive {

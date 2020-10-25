@@ -8,6 +8,7 @@ body {
   grid-template-rows: 8em auto 4em;
   width: 100vw;
   height: 100vh;
+  overflow: hidden;
 }
 
 header {
@@ -18,6 +19,7 @@ header {
   display: flex;
   justify-content: center;
   align-items: center;
+  z-index: 1;
 }
 
 header > h1 {
@@ -35,9 +37,22 @@ header > h1 {
     var(--color-3);
     background-size: 109px 109px, 109px 109px,100% 6px, 109px 109px, 109px 109px;
     background-position: 54px 55px, 0px 0px, 0px 0px, 0px 0px, 0px 0px;
+  overflow: hidden;
+}
+
+#display > svg {
+  display: block;
+  width:100%;
+  height:100%;
+}
+
+line {
+  stroke: var(--color-0);
+  stroke-width: 0.5em;
 }
 
 #control {
   grid-row: 3 / 4;
   background-color: var(--color-1);
+  z-index: 1;
 }

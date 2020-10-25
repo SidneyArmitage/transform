@@ -16,3 +16,14 @@ Program:
     endpoints:
     transforms:
   ☐ Saving
+Site:
+  control:
+    ☐ split controls into atomic classes 
+  display:
+    ✔ validation for duplicate connections @done(20-10-24 10:22)
+    ☐ validation for invalid connections
+    ✔ validation for same type connections @done(20-10-24 10:22)
+    ✔ stop connection on click @done(20-10-19 10:55)
+    ✔ pan @done(20-10-25 20:42)
+    ☐ scale - needs to be tested as large JS operations required(translate everything manually)
+    ✔ move @done(20-10-24 10:22)

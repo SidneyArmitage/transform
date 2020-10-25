@@ -2,7 +2,7 @@ import { Dropdown } from "../dropdown";
 import { Input_container} from "../factories";
 import * as input from "../factories/input";
 import * as endpoint from "../factories/endpoint";
-import { Program_UI_Control } from "../control/programUIControl";
+import { Program_UI_Control } from "../control/program_UI_Control";
 
 export default () => {
   const display = document.getElementById("display");
@@ -11,7 +11,7 @@ export default () => {
   }
   const elements = [];
   const inputContainer: Input_container = {
-    control: new Program_UI_Control(),
+    control: new Program_UI_Control(display),
     parent: display,
   };
   elements.push(input.section(inputContainer));

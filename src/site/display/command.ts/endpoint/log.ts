@@ -1,6 +1,7 @@
 import { Command } from "..";
 import { Point } from "../../../../util";
-import { Program_UI_Control } from "../../../control/programUIControl";
+import { Program_UI_Control } from "../../../control/program_UI_Control";
+import { Connector } from "../../connector";
 
 export class Log_command extends Command {
   private div: HTMLDivElement;
@@ -12,5 +13,6 @@ export class Log_command extends Command {
     this.div.textContent = "";
     
     this.area.appendChild(this.div);
+    this.input_add();
   }
 }

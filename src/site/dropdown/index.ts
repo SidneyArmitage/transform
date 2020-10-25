@@ -34,7 +34,6 @@ export class Dropdown {
   }
 
   public set_position(pos: Point) {
-    console.log(pos);
     this.pos = pos;
     this.element.style.bottom = `${pos.y}px`;
     this.element.style.left = `${pos.x}px`;
@@ -57,7 +56,7 @@ const on_click = (dropdown: Dropdown) => () => {
 const on_context_menu = (dropdown: Dropdown) => (e: MouseEvent): Boolean => {
   dropdown.set_position({
     x: e.pageX,
-    y: window.innerHeight -e.pageY,
+    y: window.innerHeight - e.pageY,
   });
   dropdown.set_visible(true);
   e.preventDefault();
