@@ -2,6 +2,7 @@ import { Command } from "./command.ts";
 import { Connection } from "./connection";
 import { Point } from "../../util";
 import { Connection_control, Program_UI_Control } from "../control";
+import { View_control } from "../control/view_control";
 
 const exists = (connections: Set<Connection>, a: Connector, b: Connector): boolean => {
   for (let connection of connections.values()) {
@@ -64,6 +65,7 @@ export class Connector {
 
   public get_pos (): Point {
     const rect = this.element.getBoundingClientRect();
+    console.log(rect.left, rect.top);
     return {
       x: rect.left + rect.width / 2,
       y: rect.top + rect.height / 2,

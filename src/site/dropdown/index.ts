@@ -17,7 +17,7 @@ export class Dropdown {
     this.element.classList.add("dropdown");
     this.parent = parent;
     items.forEach((item) => this.element.appendChild(item));
-    this.parent.appendChild(this.element);
+    document.body.appendChild(this.element);
     this.click_fn = on_click(this);
     window.addEventListener("click", this.click_fn);
     this.on_context_menu_fn = on_context_menu(this);

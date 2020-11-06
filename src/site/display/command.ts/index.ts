@@ -31,6 +31,7 @@ export abstract class Command implements I_movable {
     
     this.wrapper = document.createElement("div");
     this.wrapper.classList.add("command");
+    console.log("create on", pos);
     this.pos = control.get_view_control().correct_position({
       x: pos.x,
       y: window.innerHeight - pos.y,
@@ -78,6 +79,7 @@ export abstract class Command implements I_movable {
   }
 
   public set_pos (pos: Point) {
+    console.log("set_pos", pos);
     this.wrapper.style.top = `${pos.y}px`;
     this.wrapper.style.left = `${pos.x}px`;
     this.pos = {

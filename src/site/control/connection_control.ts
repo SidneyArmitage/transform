@@ -1,5 +1,5 @@
 import { Connector } from "../display/connector";
-import { subtract, svg_namespace } from "../../util";
+import { svg_namespace } from "../../util";
 import { View_control } from "./view_control";
 
 export class Connection_control {
@@ -25,12 +25,7 @@ export class Connection_control {
   
   public start_move (connector: Connector) {
     this.selected = connector;
-    let rect = this.svg.getBoundingClientRect();
-    let offset = {
-      x: rect.left,
-      y: rect.top,
-    };
-    let a_pos = this.view_control.correct_position(subtract(connector.get_pos(), offset));
+    let a_pos = this.view_control.correct_position(connector.get_pos());
     this.line.setAttribute("x1", a_pos.x.toFixed(0));
     this.line.setAttribute("x2", a_pos.x.toFixed(0));
     this.line.setAttribute("y1", a_pos.y.toFixed(0));
@@ -53,15 +48,10 @@ export class Connection_control {
     if (this.selected == null) {
       throw Error("no selected connector");
     }
-    let rect = this.svg.getBoundingClientRect();
-    let offset = {
-      x: rect.left,
-      y: rect.top,
-    };
-    let pos = this.view_control.correct_position(subtract({
+    let pos = this.view_control.correct_position({
       x: event.pageX,
       y: event.pageY,
-    }, offset));
+    });
     this.line.setAttribute("x2", pos.x.toFixed(0));
     this.line.setAttribute("y2", pos.y.toFixed(0));
   }
