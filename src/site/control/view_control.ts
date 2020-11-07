@@ -92,7 +92,7 @@ export class View_control {
   }
 
   public on_wheel (event: WheelEvent) {
-    this.scale = Math.max(this.scale + event.deltaY * -0.01, 0.001);
+    this.scale = Math.max(this.scale + this.scale * event.deltaY * -0.01, 0.001);
     this.size = {
       x: 1 / this.scale,
       y: 1 / this.scale,
