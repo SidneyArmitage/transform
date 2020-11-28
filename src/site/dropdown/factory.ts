@@ -1,3 +1,7 @@
+import { ICommand } from "../display/command.ts";
+import { Input_container } from "../factories";
+import { create_log } from "../message/program/create_command";
+
 export const create_section = (name: string, content: HTMLElement[]): HTMLElement => {
   const dropdown = document.createElement("div");
   dropdown.classList.add("dropdown-section");
@@ -19,6 +23,15 @@ export const create_item = (name: string, action: () => void): HTMLElement => {
   const item = document.createElement("button");
   item.classList.add("dropdown-item");
   item.textContent = name;
-  item.addEventListener("click", action);
+  item.addEventListener("click", () => {});
   return item;
+}
+
+export const create_command = async (Class: ICommand, inputs: Input_container) => {
+  if (!inputs.dropdown) {
+    throw Error("Unable to get dropdown");
+  }
+  const pos = inputs.dropdown.get_position();
+  const response = await inputs.worker.send_message("program", create_log);
+  inputs.control.add_command(new Class(pos, inputs.control, inputs.parent, response.id));
 }

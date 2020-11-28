@@ -48,8 +48,8 @@ const connection = (source: I_connection[], commands: Command_output) => {
   for (let current of source) {
     const input = commands[current.id];
     for (let item of current.next) {
-      commands[item].add_input(input);
-      input.add_output(commands[item]);
+      commands[item].add_input(input, 0);
+      input.add_output(commands[item], 0);
     }
   }
 };

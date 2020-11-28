@@ -3,6 +3,10 @@ import { I_movable } from "../../control";
 import { Program_UI_Control } from "../../control/program_UI_Control";
 import { Connector } from "../connector";
 
+export interface ICommand {
+  new(pos: Point, control: Program_UI_Control, parent: HTMLElement, id: number): Command;
+}
+
 export abstract class Command implements I_movable {
   private id: number;
   private wrapper: HTMLElement;
@@ -18,13 +22,13 @@ export abstract class Command implements I_movable {
 
   protected area: HTMLElement;
 
-  constructor(pos: Point, control: Program_UI_Control, parent: HTMLElement, name: string) {
+  constructor(pos: Point, control: Program_UI_Control, parent: HTMLElement, id: number, name: string) {
     this.movement_offset = {
       x: 0,
       y: 0,
     };
     this.control = control;
-    this.id = 0;
+    this.id = id;
     this.inputs = new Set();
     this.outputs = new Set();
     this.move_start_fn = (event: MouseEvent) => this.on_move_start(event);

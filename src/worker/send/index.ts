@@ -1,10 +1,8 @@
-export const assign_id = (message_id: number, id: number) => {
-  postMessage({
-    type: "created",
-    message_id: Date.now(),
-    command: {
-      id: id,
-      message_id: message_id,
-    },
+import { Worker_control } from "..";
+
+export const assign_id = (message_id: number, id: number, control: Worker_control) => {
+  control.send_message("response", {
+    id: id,
+    reference_id: message_id,
   });
 };

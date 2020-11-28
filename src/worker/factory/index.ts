@@ -1,10 +1,11 @@
+import { Worker_control } from "..";
 import { Program } from "../../program/program";
 import { assign_id } from "../send";
 import { Create } from "../types/in/program/create";
 import { log } from "./endpoint/log";
 import { manual } from "./input/manual";
 
-export const create = (command: Create, program: Program, message_id: number) => {
+export const create = (command: Create, program: Program, message_id: number, control: Worker_control) => {
   let id: number;
   switch(command.type) {
     case "manual_scalar":
@@ -14,5 +15,5 @@ export const create = (command: Create, program: Program, message_id: number) =>
       id = log(program);
       break;
   }
-  assign_id(message_id, id);
+  assign_id(message_id, id, control);
 }

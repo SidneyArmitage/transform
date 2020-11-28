@@ -1,9 +1,9 @@
 import { I_created } from "./created";
 
-export type message_data = I_message_created;
+export type message_data = I_response;
 
-export interface I_message_created {
-  type: "created";
-  command: I_created;
+export interface I_response {
   message_id: number;
+  type: "response";
+  command: I_created;
 };

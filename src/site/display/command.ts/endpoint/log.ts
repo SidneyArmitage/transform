@@ -6,8 +6,8 @@ import { Connector } from "../../connector";
 export class Log_command extends Command {
   private div: HTMLDivElement;
 
-  constructor(pos: Point, control: Program_UI_Control, parent: HTMLElement) {
-    super(pos, control, parent, "Log");
+  constructor(pos: Point, control: Program_UI_Control, parent: HTMLElement, id: number) {
+    super(pos, control, parent, id, "Log");
     
     this.div = document.createElement("div");
     this.div.textContent = "";

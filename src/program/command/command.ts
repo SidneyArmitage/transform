@@ -21,10 +21,12 @@ export abstract class Command<T> {
     this.on_finish_listener = [];
   }
 
-  public abstract get_inputs(): Command<any>[];
-  public abstract add_input(command: Command<any>): void;
-  public abstract get_outputs(): Command<any>[];
-  public abstract add_output(command: Command<any>): void;
+  public abstract get_input(index: number): Command<any> | undefined ;
+  public abstract get_all_inputs(): Command<any>[];
+  public abstract add_input(command: Command<any>, index: number): void;
+  public abstract get_outputs(index: number): Command<any>[];
+  public abstract get_all_outputs(): Command<any>[];
+  public abstract add_output(command: Command<any>, index: number): void;
   
   public get_value(): T {
     return this.value;
@@ -39,7 +41,7 @@ export abstract class Command<T> {
   }
 
   public async run (execution_id: number): Promise<void> {
-    if(!this.get_inputs().every(e => e.get_execution_id() === execution_id) || this.aborted) {
+    if(!this.get_all_inputs().every(e => e.get_execution_id() === execution_id) || this.aborted) {
       return;
     }
     try {
@@ -52,13 +54,13 @@ export abstract class Command<T> {
       throw err;
     }
     this.last_execution_id = execution_id;
-    await Promise.resolve(this.get_outputs().map(async output => output.run(execution_id)));
+    await Promise.resolve(this.get_all_outputs().map(async output => output.run(execution_id)));
     
   }
 
   public propagate_aborted(aborted: boolean) {
     this.aborted = aborted;
-    this.get_outputs().map(e => e.propagate_aborted(aborted));
+    this.get_all_outputs().map(e => e.propagate_aborted(aborted));
   }
 
   public add_on_start_listener (fn: () => void) {

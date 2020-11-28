@@ -16,8 +16,8 @@ export class Scalar_manual_command extends Command {
   private type: string;
   private valueInput: HTMLInputElement;
 
-  constructor(pos: Point, control: Program_UI_Control, parent: HTMLElement) {
-    super(pos, control, parent, "Manual Scalar");
+  constructor(pos: Point, control: Program_UI_Control, parent: HTMLElement, id: number) {
+    super(pos, control, parent, id, "Manual Scalar");
 
     const typeLabel = document.createElement("label");
     typeLabel.textContent = "type";

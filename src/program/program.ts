@@ -55,6 +55,7 @@ export class Program {
 
   public add_command(command: Command<any>) {
     this.command_list[command.get_id()] = command;
+    console.table(this.command_list);
   }
 
   public get_command(id: number): Command<any> {

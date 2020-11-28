@@ -2,20 +2,42 @@ import * as command from "./command";
 import * as program from "./program";
 import { message_data } from "./types/in";
 import { Program } from "../program/program";
+import { I_created } from "./types/out/created";
 
-const control = new Program();
+export class Worker_control {
 
-const onMessage = (e: MessageEvent<message_data>) => {
-  switch(e.data.type) {
-    case"program": 
-      program.process(e.data.command, control, e.data.message_id);
-    break;
-    case"command":
-      command.process(e.data.command, control, e.data.message_id);
-    break;
-    default:
-    throw Error(`Unexpected input for: ${e.data}`);
+  private index: number;
+  private control: Program;
+  constructor(control: Program) {
+    this.index = 0;
+    this.control = control;
+    addEventListener("message", (e) => this.process_message(e));
   }
+
+  private process_message (e: MessageEvent<message_data>) {
+    switch(e.data.type) {
+      case"program": 
+        program.process(e.data.command, this.control, e.data.message_id, this);
+      break;
+      case"command":
+        command.process(e.data.command, this.control, e.data.message_id, this);
+      break;
+      default:
+      throw Error(`Unexpected input for: ${e.data}`);
+    }
+  }
+
+  public send_message (type: "response", command: I_created){
+    const id = this.index++;
+    const message = {
+      command: command,
+      message_id: id,
+      type: type,
+    };
+    console.log("sending", message);
+    postMessage(message);
+  }
+
 }
 
-addEventListener("message", onMessage);
+const connection_control = new Worker_control(new Program());
