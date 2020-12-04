@@ -3,7 +3,18 @@ import { I_created } from "./created";
 export type message_data = I_response;
 
 export interface I_response {
-  message_id: number;
   type: "response";
-  command: I_created;
+  message_id: number;
+  command: I_success | I_error;
+}
+export interface I_success {
+  reference_id: number;
+  success: true;
+  data: I_created | undefined;
+};
+
+export interface I_error {
+  reference_id: number;
+  success: false;
+  data: string;
 };

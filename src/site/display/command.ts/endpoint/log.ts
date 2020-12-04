@@ -13,6 +13,6 @@ export class Log_command extends Command {
     this.div.textContent = "";
     
     this.area.appendChild(this.div);
-    this.input_add();
+    this.input_add(0, true);
   }
 }

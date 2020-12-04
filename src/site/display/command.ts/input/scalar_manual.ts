@@ -46,7 +46,7 @@ export class Scalar_manual_command extends Command {
     this.area.appendChild(typeSelect);
     this.area.appendChild(this.valueInput);
     this.area.classList.add("scalar-manual");
-    this.output_add();
+    this.output_add(0);
   }
 
   public get_value (): Primitive {

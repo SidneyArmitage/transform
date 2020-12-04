@@ -23,7 +23,7 @@ export const create_item = (name: string, action: () => void): HTMLElement => {
   const item = document.createElement("button");
   item.classList.add("dropdown-item");
   item.textContent = name;
-  item.addEventListener("click", () => {});
+  item.addEventListener("click", action);
   return item;
 }
 

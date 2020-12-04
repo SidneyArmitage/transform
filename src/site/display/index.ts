@@ -11,10 +11,11 @@ export default () => {
     throw Error("Unable to find display");
   }
   const elements = [];
+  const control = new Program_UI_Control(display);
   const inputContainer: Input_container = {
-    control: new Program_UI_Control(display),
+    control: control,
     parent: display,
-    worker: new Worker_control(),
+    worker: control.get_worker(),
   };
   elements.push(input.section(inputContainer));
   elements.push(endpoint.section(inputContainer));

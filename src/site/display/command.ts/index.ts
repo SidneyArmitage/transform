@@ -96,15 +96,15 @@ export abstract class Command implements I_movable {
     return this.pos;
   }
 
-  protected get_id () {
+  public get_id () {
     return this.id;
   }
 
-  protected input_add() {
-    this.inputs.add(new Connector(this.control, this, this.input_wrapper, true));
+  protected input_add(id: number, is_limited: boolean) {
+    this.inputs.add(new Connector(this.control, this, this.input_wrapper, true, id, is_limited));
   }
 
-  protected output_add() {
-    this.outputs.add(new Connector(this.control, this, this.output_wrapper, false));
+  protected output_add(id: number) {
+    this.outputs.add(new Connector(this.control, this, this.output_wrapper, false, id, false));
   }
 }

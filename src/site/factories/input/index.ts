@@ -11,7 +11,9 @@ export const section = (inputs: Input_container): HTMLElement => {
       throw Error("Unable to get dropdown");
     }
     const pos = inputs.dropdown.get_position();
+    console.log("adding");
     const response = await inputs.worker.send_message("program", create_manual);
+    console.log("added");
     inputs.control.add_command(new Scalar_manual_command(pos, inputs.control, inputs.parent, response.id));
   }));
   return create_section("Input", elements);

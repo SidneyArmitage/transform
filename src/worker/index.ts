@@ -3,6 +3,7 @@ import * as program from "./program";
 import { message_data } from "./types/in";
 import { Program } from "../program/program";
 import { I_created } from "./types/out/created";
+import { I_error, I_success } from "./types/out";
 
 export class Worker_control {
 
@@ -27,7 +28,7 @@ export class Worker_control {
     }
   }
 
-  public send_message (type: "response", command: I_created){
+  public send_message (type: "response", command: I_success | I_error){
     const id = this.index++;
     const message = {
       command: command,

@@ -80,7 +80,6 @@ export class View_control {
       x: view.x / this.scale - this.position.x,
       y: (view.y - dist) / this.scale - this.position.y + dist,
     };
-    console.log("view", view, "position", this.position, "scale:", this.scale, "out", out);
     return out;
   }
 
