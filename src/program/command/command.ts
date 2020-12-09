@@ -1,16 +1,16 @@
 import { Program } from "../program";
 
-export abstract class Command<T> {
+export abstract class Command {
   private last_execution_id: number;
   private id: number;
   private program: Program;
   private aborted: boolean;
   private on_start_listener: (() => void)[];
-  private on_finish_listener: (((err: any, value: T | null) => void))[];
+  private on_finish_listener: (((err: any, value: any[] | null) => void))[];
   
-  protected value: T;
+  protected value: any[];
 
-  constructor(program: Program, value: T, id?: number) {
+  constructor(program: Program, value: any[], id?: number) {
     this.last_execution_id = 0;
     this.id = id || program.pop_id();
     program.add_command(this);
@@ -21,15 +21,18 @@ export abstract class Command<T> {
     this.on_finish_listener = [];
   }
 
-  public abstract get_input(index: number): Command<any> | undefined ;
-  public abstract get_all_inputs(): Command<any>[];
-  public abstract add_input(command: Command<any>, index: number): void;
-  public abstract get_outputs(index: number): Command<any>[];
-  public abstract get_all_outputs(): Command<any>[];
-  public abstract add_output(command: Command<any>, index: number): void;
+  public abstract get_input(index: number): Command | undefined;
+  public abstract get_all_inputs(): Command[];
+  public abstract add_input(command: Command, index: number): void;
+  public abstract get_outputs(index: number): Command[];
+  public abstract get_output_index(command: Command): number | undefined;
+  public abstract get_all_outputs(): Command[];
+  public abstract add_output(command: Command, index: number): void;
+  public abstract get_type_input(index: number): number;
+  public abstract get_type_output(index: number): number;
   
-  public get_value(): T {
-    return this.value;
+  public get_value(index: number): any {
+    return this.value[index % this.value.length];
   }
 
   public get_execution_id() {

@@ -1,4 +1,4 @@
-import { I_created } from "./created";
+import { I_created } from "./created.js";
 
 export type message_data = I_response;
 

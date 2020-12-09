@@ -16,6 +16,9 @@ Program:
     endpoints:
     transforms:
   ☐ Saving
+  test:
+    ☐ primitives
+    ☐ multi endings
 Site:
   control:
     ☐ split controls into atomic classes 

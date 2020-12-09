@@ -1,8 +1,8 @@
-import * as command from "./command";
-import * as program from "./program";
+import * as command from "./command.js";
+import * as program from "./program.js";
 import { message_data } from "./types/in";
 import { Program } from "../program/program";
-import { I_created } from "./types/out/created";
+import { I_created } from "./types/out/created.js";
 import { I_error, I_success } from "./types/out";
 
 export class Worker_control {

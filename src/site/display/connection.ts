@@ -1,6 +1,6 @@
 import { add, subtract, svg_namespace } from "../../util";
 import { View_control } from "../control/view_control";
-import { Connector } from "./connector";
+import { Connector } from "./connector.js";
 
 export class Connection {
   private a: Connector;

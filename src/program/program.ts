@@ -1,12 +1,12 @@
-import { Command } from "./command/command";
-import { Input } from "./command/input/input";
+import { Command } from "./command/command.js";
+import { Input } from "./command/input/input.js";
 
 interface Command_list {
-  [id: number]: Command<any>
+  [id: number]: Command;
 }
 
 export class Program {
-  private inputs: Command<any>[];
+  private inputs: Command[];
   private counter: number;
   private id: number;
   private command_list: Command_list;
@@ -34,7 +34,7 @@ export class Program {
     return true;
   }
 
-  public add_input (input: Input<any>) {
+  public add_input (input: Input) {
     this.inputs.push(input);
   }
 
@@ -53,12 +53,12 @@ export class Program {
     this.inputs.map(e => e.propagate_aborted(true));
   }
 
-  public add_command(command: Command<any>) {
+  public add_command(command: Command) {
     this.command_list[command.get_id()] = command;
     console.table(this.command_list);
   }
 
-  public get_command(id: number): Command<any> {
+  public get_command(id: number): Command {
     return this.command_list[id]
   }
 }

@@ -1,12 +1,12 @@
-import { Command } from "../program/command/command";
-import { Program } from "../program/program";
-import { I_log_command, log } from "./factories/log";
-import { I_manual_command, manual } from "./factories/manual";
+import { Command } from "../program/command/command.js";
+import { Program } from "../program/program.js";
+import { I_log_command, log } from "./factories/log.js";
+import { I_manual_command, manual } from "./factories/manual.js";
 
 type I_command = I_manual_command | I_log_command;
 
 interface Command_output {
-  [i: number]: Command<any>;
+  [i: number]: Command;
 }
 
 interface I_connection {

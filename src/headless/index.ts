@@ -1,6 +1,6 @@
 import { readFileSync } from "fs";
 import { join } from "path";
-import { I_input, parse } from "./parse";
+import { I_input, parse } from "./parse.js";
 
 const main = async (args: string[]) => {
     console.log(args);

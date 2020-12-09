@@ -1,9 +1,9 @@
 import { Command } from "../display/command.ts";
 import { svg_namespace } from "../../util";
-import { Drag_control } from "./drag_control";
-import { Connection_control } from "./connection_control";
-import { View_control } from "./view_control";
-import { Worker_control } from "./worker_control";
+import { Drag_control } from "./drag_control.js";
+import { Connection_control } from "./connection_control.js";
+import { View_control } from "./view_control.js";
+import { Worker_control } from "./worker_control.js";
 
 export class Program_UI_Control {
   private connection_control: Connection_control;

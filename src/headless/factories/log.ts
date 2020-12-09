@@ -1,5 +1,5 @@
-import { Log } from "../../program/command/endpoint/variations/log";
-import { Program } from "../../program/program";
+import { Log } from "../../program/command/endpoint/variations/log.js";
+import { Program } from "../../program/program.js";
 
 export interface I_log_command {
   id: number;

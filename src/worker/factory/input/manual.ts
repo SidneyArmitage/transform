@@ -6,13 +6,13 @@ export const manual = (command: Manual_type, program: Program): number => {
   let manual;
   switch (command.type) {
     case "boolean":
-      manual = new Manual<boolean>(program, command.value);
+      manual = new Manual(program, [command.value]);
       break;
     case "number":
-      manual = new Manual<number>(program, command.value);
+      manual = new Manual(program, [command.value]);
       break;
     case "string":
-      manual = new Manual<string>(program, command.value);
+      manual = new Manual(program, [command.value]);
       break;
     default: 
       throw Error("Unexpected type received for manual");

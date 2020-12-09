@@ -1,5 +1,5 @@
-import { Manual } from "../../program/command/input/variations/manual";
-import { Program } from "../../program/program";
+import { Manual } from "../../program/command/input/variations/manual.js";
+import { Program } from "../../program/program.js";
 
 export interface I_manual_command {
   id: number;
@@ -8,9 +8,9 @@ export interface I_manual_command {
 }
 
 interface I_manual_data {
-  value: any;
+  value: any[];
 }
 
-export const manual = (data: I_manual_data, program: Program): Manual<any> => {
+export const manual = (data: I_manual_data, program: Program): Manual => {
   return new Manual(program, data.value);
 }

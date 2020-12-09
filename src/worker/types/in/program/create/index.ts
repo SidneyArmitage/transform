@@ -1,5 +1,5 @@
-import { I_log } from "./log";
-import { I_manual } from "./manual";
+import { I_log } from "./log.js";
+import { I_manual } from "./manual.js";
 
 export type Create = I_manual | I_log;
 

@@ -1,15 +1,23 @@
-import { Program } from "../../../program";
-import { Command } from "../../command";
-import { Input } from "../input";
+import { Program } from "../../../program.js";
+import { Primitive, to_primitive } from "../../../types/primitive.js";
+import { Input } from "../input.js";
 
-export class Manual<T> extends Input<T> {
+export class Manual extends Input {
 
-  constructor(program: Program, value: T, id?: number) {
+  private type: Primitive[];
+
+  constructor(program: Program, value: any[], id?: number) {
     super(program, value, id);
+    this.type = value.map(v => to_primitive(typeof v));
   }  
 
-  public set_value (value: T) {
+  public set_value (value: any[]) {
     this.value = value;
+    this.type = value.map(v => to_primitive(typeof v));
+  }
+
+  public get_type_output(index: number): number {
+    return this.type[index];
   }
 
   protected async run_local(): Promise<void> {

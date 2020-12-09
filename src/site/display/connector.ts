@@ -1,5 +1,5 @@
-import { Command } from "./command.ts";
-import { Connection } from "./connection";
+import { Command } from "./command.ts.js";
+import { Connection } from "./connection.js";
 import { Point } from "../../util";
 import { Connection_control, Program_UI_Control } from "../control";
 import { View_control } from "../control/view_control";

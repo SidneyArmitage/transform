@@ -1,3 +1,3 @@
-import display from "./display";
+import display from "./display.js";
 
 display();
