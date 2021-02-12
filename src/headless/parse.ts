@@ -1,9 +1,13 @@
 import { Command } from "../program/command/command.js";
 import { Program } from "../program/program.js";
+import { divide, I_divide_command } from "./factories/divide.js";
 import { I_log_command, log } from "./factories/log.js";
 import { I_manual_command, manual } from "./factories/manual.js";
+import { I_product_command, product } from "./factories/product.js";
+import { I_subtract_command, subtract } from "./factories/subtract.js";
+import { I_sum_command, sum } from "./factories/sum.js";
 
-type I_command = I_manual_command | I_log_command;
+type I_command = I_manual_command | I_log_command | I_divide_command | I_product_command | I_sum_command | I_subtract_command;
 
 interface Command_output {
   [i: number]: Command;
@@ -11,7 +15,12 @@ interface Command_output {
 
 interface I_connection {
   id: number;
-  next: number[];
+  next: I_connect[][];
+}
+
+interface I_connect {
+  id: number;
+  index: number;
 }
 
 export interface I_input {
@@ -32,6 +41,18 @@ const command = (source: I_command[], program: Program): Command_output => {
         case "log": 
           output[current.id] = log(program);
           break;
+        case "product": 
+          output[current.id] = product(program);
+          break;
+        case "divide": 
+          output[current.id] = divide(program);
+          break;
+        case "subtract": 
+          output[current.id] = subtract(program);
+          break;
+        case "sum": 
+          output[current.id] = sum(program);
+          break;
         default:
           console.error("unknown source for:", source[item].type);
       }
@@ -47,9 +68,12 @@ const command = (source: I_command[], program: Program): Command_output => {
 const connection = (source: I_connection[], commands: Command_output) => {
   for (let current of source) {
     const input = commands[current.id];
-    for (let item of current.next) {
-      commands[item].add_input(input, 0);
-      input.add_output(commands[item], 0);
+    for (let con in current.next) {
+      for (let item in current.next[con]) {
+        const cur = current.next[con][item];
+        commands[cur.id].add_input(input, cur.index);
+        input.add_output(commands[cur.id], Number.parseInt(item));
+      }
     }
   }
 };

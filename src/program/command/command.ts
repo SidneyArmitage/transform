@@ -82,5 +82,13 @@ export abstract class Command {
     this.on_finish_listener.splice(this.on_finish_listener.indexOf(fn), 1);
   }
 
-  protected async abstract run_local(): Promise<void>;
+  protected abstract run_local(): Promise<void>;
+}
+
+export const get_value = (self: Command, other: Command): any =>  {
+  let index = other.get_output_index(self);
+  if (index) {
+    other.get_value(index);
+  }
+  throw "No index supplied to get_value";
 }

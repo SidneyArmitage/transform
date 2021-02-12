@@ -1,12 +1,12 @@
 import { Program } from "../../program.js";
 import { Command } from "../command.js";
 
-export abstract class Transform<T> extends Command {
+export abstract class Transform extends Command {
   private outputs: Command[][];
   private inputs: Command[];
 
-  constructor(program: Program, value: any[]) {
-    super(program, value);
+  constructor(program: Program, value: any[], id?: number) {
+    super(program, value, id);
     this.outputs = new Array(value.length);
     this.inputs = [];
   }

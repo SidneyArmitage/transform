@@ -1,0 +1,68 @@
+{
+  "command": [
+    {
+      "id": 0,
+      "type": "scalar-manual",
+      "data": {
+        "value": 4
+      }
+    },
+    {
+      "id": 1,
+      "type": "log",
+      "data": {
+
+      }
+    },
+    {
+      "id": 2,
+      "type": "product",
+      "data": {
+
+      }
+    },
+    {
+      "id": 3,
+      "type": "scalar-manual",
+      "data": {
+        "value": 2
+      }
+    }
+  ],
+  "connection": [
+    {
+      "id": 0,
+      "next": [
+        [
+          {
+          "id": 2,
+          "index": 0
+          }
+        ]
+      ]
+    },
+    {
+      "id": 3,
+      "next": [
+        [
+          {
+          "id": 2,
+          "index": 1
+          }
+        ]
+      ]
+    },
+    {
+      "id": 2,
+      "next": [
+        [
+          {
+          "id": 1,
+          "index": 0
+          }
+        ]
+      ]
+    }
+  ],
+  "counter": 4
+}

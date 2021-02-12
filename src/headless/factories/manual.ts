@@ -8,9 +8,9 @@ export interface I_manual_command {
 }
 
 interface I_manual_data {
-  value: any[];
+  value: any;
 }
 
 export const manual = (data: I_manual_data, program: Program): Manual => {
-  return new Manual(program, data.value);
+  return new Manual(program, [data.value]);
 }

@@ -4,7 +4,7 @@
       "id": 0,
       "type": "scalar-manual",
       "data": {
-        "value": [1]
+        "value": 1
       }
     },
     {
@@ -19,7 +19,12 @@
     {
       "id": 0,
       "next": [
-        1
+        [
+          {
+          "id": 1,
+          "index": 0
+          }
+        ]
       ]
     }
   ],
