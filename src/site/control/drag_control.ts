@@ -1,5 +1,5 @@
 import { Point } from "../../util";
-import { Command } from "../display/command.ts";
+import { Command } from "../display/command";
 
 export interface I_movable {
   on_move(position: Point): void;

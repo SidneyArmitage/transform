@@ -1,6 +1,6 @@
 import { Program } from "../../../program";
-import { Primitive } from "../../../types/primitive.js";
-import { Transform } from "../transform.js";
+import { Primitive } from "../../../types/primitive";
+import { Transform } from "../transform";
 
 export class Divide extends Transform {
 

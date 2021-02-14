@@ -1,5 +1,5 @@
 import { Input_container } from "..";
-import { Scalar_manual_command } from "../../display/command.ts/input/scalar_manual";
+import { Scalar_manual_command } from "../../display/command/input/scalar_manual";
 import { create_item, create_section } from "../../dropdown"
 import { create_manual } from "../../message/program/create_command";
 

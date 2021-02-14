@@ -1,6 +1,6 @@
-import { Program } from "../../../program.js";
-import { Primitive, to_primitive } from "../../../types/primitive.js";
-import { Input } from "../input.js";
+import { Program } from "../../../program";
+import { Primitive, to_primitive } from "../../../types/primitive";
+import { Input } from "../input";
 
 export class Manual extends Input {
 

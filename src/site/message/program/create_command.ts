@@ -9,12 +9,40 @@ export const create_manual: I_create = ({
       type: "string",
       value: "",
     },
-  }
+  },
 });
 
 export const create_log: I_create = ({
   type: "create",
   command: {
-    type: "log"
-  }
+    type: "log",
+  },
+});
+
+export const create_divide: I_create = ({
+  type: "create",
+  command: {
+    type: "divide",
+  },
+});
+
+export const create_product: I_create = ({
+  type: "create",
+  command: {
+    type: "product",
+  },
+});
+
+export const create_subtract: I_create = ({
+  type: "create",
+  command: {
+    type: "subtract",
+  },
+});
+
+export const create_sum: I_create = ({
+  type: "create",
+  command: {
+    type: "sum",
+  },
 });

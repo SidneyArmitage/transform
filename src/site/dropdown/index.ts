@@ -1,5 +1,5 @@
 import { Point, zero } from "../../util";
-export * from "./factory.js";
+export * from "./factory";
 
 export class Dropdown {
 

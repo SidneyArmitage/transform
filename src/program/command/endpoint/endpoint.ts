@@ -1,5 +1,5 @@
-import { Program } from "../../program.js";
-import { Command } from "../command.js";
+import { Program } from "../../program";
+import { Command } from "../command";
 
 export abstract class Endpoint extends Command {
   private inputs: Command[];

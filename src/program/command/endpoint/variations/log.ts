@@ -1,5 +1,5 @@
-import { Primitive } from "../../../types/primitive.js";
-import { Endpoint } from "../endpoint.js";
+import { Primitive } from "../../../types/primitive";
+import { Endpoint } from "../endpoint";
 
 export class Log extends Endpoint {
   

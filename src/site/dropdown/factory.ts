@@ -1,4 +1,4 @@
-import { ICommand } from "../display/command.ts";
+import { ICommand } from "../display/command";
 import { Input_container } from "../factories";
 import { create_log } from "../message/program/create_command";
 

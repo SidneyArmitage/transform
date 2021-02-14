@@ -1,2 +1,2 @@
-export * from "./point.js";
-export * from "./constants.js";
+export * from "./point";
+export * from "./constants";

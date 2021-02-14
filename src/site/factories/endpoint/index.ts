@@ -1,5 +1,5 @@
 import { Input_container } from "..";
-import { Log_command } from "../../display/command.ts/endpoint/log";
+import { Log_command } from "../../display/command/endpoint/log";
 import { create_item, create_section } from "../../dropdown";
 import { create_log } from "../../message/program/create_command";
 
