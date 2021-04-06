@@ -1,3 +1,5 @@
+import { Matrix } from "./matrix";
+
 export interface Point {
   x: number;
   y: number;
@@ -26,4 +28,9 @@ export const invert_x = (point: Point) => ({
 export const invert_y = (point: Point) => ({
   x: point.x,
   y: -point.y,
+});
+
+export const transform = (point: Point, matrix: Matrix): Point => ({
+  x: point.x * matrix[0] + point.y * matrix[1] + matrix[2],
+  y: point.y * matrix[3] + point.y * matrix[4] + matrix[5],
 });

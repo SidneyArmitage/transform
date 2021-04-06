@@ -52,6 +52,10 @@ line {
   stroke-width: 0.5em;
 }
 
+line.selected {
+  stroke:var(--color-red-0);
+}
+
 #control {
   grid-row: 3 / 4;
   background-color: var(--color-1);

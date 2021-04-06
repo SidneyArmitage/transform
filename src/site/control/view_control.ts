@@ -15,8 +15,10 @@ export class View_control {
 
   constructor(element: HTMLElement) {
     this.element = element;
-    document.head.appendChild(document.createElement("style"));
-    const style = document.styleSheets[1];
+    const style = document.head.appendChild(document.createElement("style")).sheet;
+    if (style === null) {
+      throw Error("unable to set style");
+    }
     const id = style.insertRule(`#${this.element.id} > .command, #${this.element.id} > svg > * {}`);
     const rule = style.cssRules.item(id);
     if(rule === null) {
@@ -44,7 +46,6 @@ export class View_control {
       x: 0,
       y: 0,
     };
-    this.element.addEventListener("mousedown", (event) => this.start_pan(event));
     this.element.addEventListener("wheel", (event: WheelEvent) => this.on_wheel(event));
     this.update();
   }

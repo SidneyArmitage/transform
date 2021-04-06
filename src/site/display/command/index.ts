@@ -83,7 +83,7 @@ export abstract class Command implements I_movable {
   }
 
   public set_pos (pos: Point) {
-    console.log("set_pos", pos);
+    // console.log("set_pos", pos);
     this.wrapper.style.top = `${pos.y}px`;
     this.wrapper.style.left = `${pos.x}px`;
     this.pos = {
@@ -106,5 +106,9 @@ export abstract class Command implements I_movable {
 
   protected output_add(id: number) {
     this.outputs.add(new Connector(this.control, this, this.output_wrapper, false, id, false));
+  }
+
+  public get_outputs(): Connector[] {
+    return Array.from(this.outputs);
   }
 }

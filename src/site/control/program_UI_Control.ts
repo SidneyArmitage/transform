@@ -4,7 +4,7 @@ import { Drag_control } from "./drag_control";
 import { Connection_control } from "./connection_control";
 import { View_control } from "./view_control";
 import { Worker_control } from "./worker_control";
-
+import { Selectable } from "../display/selectable";
 export class Program_UI_Control {
   private connection_control: Connection_control;
   private move_control: Drag_control;
@@ -13,6 +13,7 @@ export class Program_UI_Control {
   private commands: Command[];
   private element: HTMLElement;
   private worker_control: Worker_control;
+  private selected: Selectable[];
   
   constructor(element: HTMLElement) {
     this.element = element;
@@ -23,6 +24,13 @@ export class Program_UI_Control {
     this.connection_control = new Connection_control(this.element, this.svg, this.view_control);
     this.move_control = new Drag_control(this.element);
     this.commands = [];
+    this.selected = [];
+    // add listeners last
+    this.element.addEventListener("mousedown", (event) => this.mouse_down(event));
+  }
+
+  public mouse_down (event: MouseEvent) {
+    return this.view_control.start_pan(event);
   }
 
   public get_worker () {
@@ -43,6 +51,30 @@ export class Program_UI_Control {
 
   public get_view_control() {
     return this.view_control;
+  }
+
+  public clear_selection() {
+    for (const item of this.selected) {
+      item.deselect();
+    }
+    this.selected = [];
+  }
+
+  public remove_selected(item: Selectable) {
+    this.selected.splice(this.selected.indexOf(item), 1);
+  }
+
+  public select (items: Selectable[], append: boolean = false){
+    for (const item of items) {
+      item.select();
+    }
+    if (append === false) {
+      this.clear_selection();
+    }
+    this.selected = [
+      ...this.selected,
+      ...items,
+    ]
   }
 
 }
